@@ -7,22 +7,38 @@ public class Weapon : MonoBehaviour
     public GameObject chargeBulletPrefab;
     [SerializeField] private float chargeSpeed;
     [SerializeField] private float chargeTime;
+    [SerializeField] private AudioClip chargeClip;
+    [SerializeField] private AudioClip shootingClip;
+
     private bool IsCharging;
+   
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+
     private void Update()
     {
 
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            audioSource.clip = shootingClip;
+            audioSource.Play();
         }
         if (Input.GetButton("Fire1") && chargeTime < 2)
         {
             IsCharging = true;
+           
             if (IsCharging == true)
-            {
+            { 
+               
                 chargeTime += Time.deltaTime * chargeSpeed;
             }
-            
+           
         
 
         }
@@ -33,7 +49,7 @@ public class Weapon : MonoBehaviour
             ReleaseCharge();
         }
 
-        if (Input.GetButtonUp("Fire1") && chargeTime <= 2)
+        if (Input.GetButtonUp("Fire1"))
 
         {
             chargeTime = 0;
