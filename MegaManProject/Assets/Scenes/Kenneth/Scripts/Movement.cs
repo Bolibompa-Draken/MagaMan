@@ -4,6 +4,7 @@ public class Movement : MonoBehaviour
 {
     private float horizontal;
     private float speed = 8f;
+    float currentSpeed;
     private float sprintSpeed = 16f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
@@ -24,14 +25,20 @@ public class Movement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
-        float currentSpeed = speed;
+         currentSpeed = speed;
         if (Input.GetKey(KeyCode.LeftShift))
         {
             currentSpeed = sprintSpeed;
         }
-        rb.linearVelocity = new Vector2(horizontal * currentSpeed, rb.linearVelocity.y);
+       
 
+      
+    }
+
+    private void FixedUpdate()
+    {
         Flip();
+        rb.linearVelocity = new Vector2(horizontal * currentSpeed, rb.linearVelocity.y);
     }
     private bool IsGrounded()
     {
@@ -40,12 +47,18 @@ public class Movement : MonoBehaviour
 
     private void Flip()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+
+        if(horizontal > 0)
         {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            isFacingRight = true;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+
+        if (horizontal < 0)
+        {
+            isFacingRight = false;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+
     }
 }
