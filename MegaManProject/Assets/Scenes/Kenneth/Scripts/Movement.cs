@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public bool isRunning = false;
     private float horizontal;
     private float speed = 8f;
     float currentSpeed;
