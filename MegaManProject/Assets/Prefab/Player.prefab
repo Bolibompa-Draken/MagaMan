@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695e296e821c9c84a8714089c42149ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRunning: 0
   rb: {fileID: 16354088589356366}
   groundCheck: {fileID: 5455708821198806548}
   groundLayer:
