@@ -2,27 +2,31 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Header("Bullet Settings")]
     public float speed = 20f;
+    [SerializeField] public float lifeTime = 5f;
+
+    [Header("References")]
     public Rigidbody2D rb;
-    [SerializeField] public float lifeTime;
+
     void Start()
     {
-       rb.linearVelocity= transform.right*speed;
+        rb.linearVelocity = transform.right * speed;
         Invoke("DestroyBullet", lifeTime);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (!collision.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void OnTriggerEnter2D ()
-    {
-        
-    }
     void DestroyBullet()
     {
         Destroy(gameObject);
     }
 }
+
+
