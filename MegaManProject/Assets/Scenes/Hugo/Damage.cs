@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Spikes : MonoBehaviour
+public class Damage : MonoBehaviour
 {
     [SerializeField] public int damage = 1;
 
