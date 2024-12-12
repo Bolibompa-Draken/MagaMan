@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71975df8d09056f41abe6c0c0b46b78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDamage: 2
   isPaused: 0
 --- !u!212 &6276245807783880463
 SpriteRenderer:
