@@ -1,13 +1,21 @@
 using UnityEngine;
-
+using System.Collections;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] public int maxHealth = 10;
     [SerializeField] public int currentHealth;
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private float duration;
+    [SerializeField] private Material originalMaterial;
+    private SpriteRenderer spriteRenderer;
+    private Coroutine flashRoutine;
 
     void Start()
     {
         currentHealth = maxHealth;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalMaterial = spriteRenderer.material;
     }
 
     public void TakeDamage(int damage)
@@ -19,6 +27,8 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
+
+        Flash();
     }
 
     public void Heal(int amount)
@@ -38,4 +48,28 @@ public class EnemyHealth : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+
+    public void Flash()
+    {
+        
+        if (flashRoutine != null)
+        {
+            
+            StopCoroutine(flashRoutine);
+        }
+        flashRoutine = StartCoroutine(FlashRoutine());
+    }
+
+    private IEnumerator FlashRoutine()
+    {
+        spriteRenderer.material = flashMaterial;
+
+        yield return new WaitForSeconds(duration);
+
+        spriteRenderer.material = originalMaterial;
+
+        flashRoutine = null;
+    }
+
 }
