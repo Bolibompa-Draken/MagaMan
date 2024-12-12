@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
+    internal static UnityEngine.Camera main;
     private Vector3 offset = new Vector3(0f, 0f, -10f);
     private float smoothTime = 0.25f;
     private Vector3 velocity = Vector3.zero;
