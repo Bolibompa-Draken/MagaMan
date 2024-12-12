@@ -168,3 +168,4 @@ MonoBehaviour:
   speed: 20
   lifeTime: 4
   rb: {fileID: 960874647027172093}
+  hitEffectPrefab: {fileID: 139620682866745904, guid: 4dd7766054f79fd46920599c045c9fe0, type: 3}

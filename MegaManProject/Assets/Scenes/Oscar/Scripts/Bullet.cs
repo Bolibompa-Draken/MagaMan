@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
 
     [Header("References")]
     public Rigidbody2D rb;
+    public GameObject hitEffectPrefab;
 
     void Start()
     {
@@ -19,6 +20,10 @@ public class Bullet : MonoBehaviour
     {
         if (!collision.CompareTag("Player"))
         {
+          
+            Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+
+          
             Destroy(gameObject);
         }
     }
@@ -28,5 +33,6 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
 
 
