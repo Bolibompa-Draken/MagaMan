@@ -806,6 +806,8 @@ MonoBehaviour:
   chargeTime: 0
   chargeClip: {fileID: 8300000, guid: 8dc4d91d4f16a934aa41540781769a8f, type: 3}
   shootingClip: {fileID: 8300000, guid: 6fa587d7d30f98b47adee7f44162c4b5, type: 3}
+  playerTransform: {fileID: 614136790}
+  weaponTransfrom: {fileID: 1884843788}
 --- !u!82 &1884843790
 AudioSource:
   m_ObjectHideFlags: 0
