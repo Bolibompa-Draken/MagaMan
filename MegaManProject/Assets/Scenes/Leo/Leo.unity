@@ -6238,6 +6238,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3793003352249592759, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4248458461285814349, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5
