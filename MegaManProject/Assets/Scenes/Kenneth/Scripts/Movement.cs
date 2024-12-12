@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Flip();
+      //  Flip();
         rb.linearVelocity = new Vector2(horizontal * currentSpeed, rb.linearVelocity.y);
     }
     private bool IsGrounded()
