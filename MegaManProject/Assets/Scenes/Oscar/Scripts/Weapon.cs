@@ -3,8 +3,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Header("Player Settings")]
-    public Transform player; 
-    public float orbitRadius = 1.5f; 
+    public Transform player;
+    public float orbitRadius = 1.5f;
 
     [Header("Fire Points and Prefabs")]
     public Transform firePoint;
@@ -23,6 +23,9 @@ public class Weapon : MonoBehaviour
     private AudioSource audioSource;
     private UnityEngine.Camera mainCamera;
 
+    [SerializeField] Transform playerTransform;
+    [SerializeField] Transform weaponTransfrom;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -31,7 +34,7 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        OrbitAroundPlayer();
+      //  OrbitAroundPlayer();
         AimAtMouse();
 
         if (Input.GetButtonDown("Fire1"))
@@ -76,9 +79,27 @@ public class Weapon : MonoBehaviour
         Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0f;
 
-        Vector3 aimDirection = (mousePosition - firePoint.position).normalized;
-        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
+        if (Vector2.Distance(mousePosition, transform.position) > 0.1)
+        {
+            OrbitAroundPlayer();
+
+         
+            if (mousePosition.x < playerTransform.position.x)
+            {
+                playerTransform.rotation = Quaternion.Euler(0, 180, 0);
+                weaponTransfrom.localScale = new Vector3(1, -1, 1);
+            }
+            else
+            {
+                playerTransform.rotation = Quaternion.Euler(0, 0, 0);
+                weaponTransfrom.localScale = new Vector3(1, 1, 1); 
+            }
+
+            
+            Vector3 aimDirection = (mousePosition - firePoint.position).normalized;
+            float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+            firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
+        }
     }
 
     private void Shoot()
