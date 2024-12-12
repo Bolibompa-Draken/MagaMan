@@ -1,110 +1,85 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StaminaBar : MonoBehaviour
 {
-    public float stamina;
-    float maxStamina;
-    bool isCooldown = false;
-    public float cooldownTime = 2f; // Cooldown time in seconds
+    public float maxStamina = 100f;
+    public float staminaDrainRate = 20f;
+    public float staminaRegenRate = 15f;
+    public float regenDelay = 2f;
+    public float currentStamina;
+    private bool isRegenerating = false;
 
     public Slider staminaBar;
-    public float dValue;
+    private bool isRunning = false;
+    private bool isStaminaEmpty = false;
 
-    private Vector3 lastPosition; // Store the last position to check movement
-
-    Movement playerMove;
-
-    // Start is called before the first frame update
     void Start()
     {
-        maxStamina = stamina;
+        currentStamina = maxStamina;
         staminaBar.maxValue = maxStamina;
-        lastPosition = transform.position;
-
-        playerMove = FindObjectOfType<Movement>().GetComponent<Movement>();
+        staminaBar.value = currentStamina;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        HandleRunning();
+        UpdateStaminaUI();
+    }
 
-        //Debug.Log(playerMove.isRunning);
+    void HandleRunning()
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal");
 
-
-        if (!Input.GetKey(KeyCode.LeftShift) || !playerMove.isRunning) // Check if running is allowed and character is moving
+        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && Mathf.Abs(horizontal) > 0)
         {
-            if (stamina < maxStamina && !isCooldown) // Only increase stamina if not in cooldown
-                IncreaseEnergy();
+            isRunning = true;
+            isRegenerating = false;
+            currentStamina -= staminaDrainRate * Time.deltaTime;
+
+            if (currentStamina <= 0)
+            {
+                currentStamina = 0;
+                isRunning = false;
+                isStaminaEmpty = true;
+                Invoke(nameof(StartRegeneration), regenDelay);
+            }
         }
         else
         {
-            isCooldown = false; // Reset cooldown when left shift is pressed
-            DecreaseEnergy();
+            if (isRunning)
+            {
+                isRunning = false;
+                Invoke(nameof(StartRegeneration), regenDelay);
+            }
         }
 
-        staminaBar.value = stamina;
-
-        // Check if LeftShift key is released
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (isRegenerating && currentStamina < maxStamina)
         {
-            ActivateCooldown();
-        } // Update last position
-    }
+            currentStamina += staminaRegenRate * Time.deltaTime;
+            if (currentStamina > maxStamina)
+                currentStamina = maxStamina;
 
-    private void DecreaseEnergy()
-    {
-        if (stamina > 0)
-            stamina -= dValue * Time.deltaTime;
-        else
-        {
-            stamina = 0;
-            playerMove.isRunning = false; // Disable running when stamina hits 0
-            ActivateCooldown();
+            if (currentStamina == maxStamina)
+            {
+                isRegenerating = false;
+                isStaminaEmpty = false;
+            }
         }
     }
 
-    private void IncreaseEnergy()
+    void StartRegeneration()
     {
-        if (stamina < maxStamina && !isCooldown) // Add condition to check if stamina is less than maxStamina and not in cooldown
-        {
-            stamina += dValue * Time.deltaTime;
-            if (stamina > maxStamina) // Ensure stamina doesn't exceed maxStamina
-                stamina = maxStamina;
-
-            if (stamina > 0)
-                playerMove.isRunning = true; // Enable running when stamina is restored
-            else
-                playerMove.isRunning = false; // Disable running when stamina is zero
-        }
-        else
-        {
-            playerMove.isRunning = false; // Disable running when in cooldown or stamina is already at max
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift) && playerMove.isRunning && stamina > 0)
-        {
-            playerMove.isRunning = true; // Enable running only when left shift is pressed down, character is moving, and stamina is greater than zero
-        }
-        else
-        {
-            playerMove.isRunning = false; // Disable running in other cases
-        }
+        isRegenerating = true;
     }
 
-    private void ActivateCooldown()
+    void UpdateStaminaUI()
     {
-        isCooldown = true;
-        StartCoroutine(StaminaCooldown());
+        staminaBar.value = currentStamina;
     }
 
-    IEnumerator StaminaCooldown()
+    public float CurrentStamina
     {
-        yield return new WaitForSeconds(cooldownTime);
-        isCooldown = false; // Reset cooldown after the specified time
+        get { return currentStamina; }
     }
 }
-
-
