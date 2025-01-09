@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float duration;
     [SerializeField] private Material originalMaterial;
+    [SerializeField] GameObject bloodSplatterParticleEffect;
     private SpriteRenderer spriteRenderer;
     private Coroutine flashRoutine;
 
@@ -46,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        Instantiate(bloodSplatterParticleEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

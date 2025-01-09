@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         // Automatically find the StaminaBar component attached to the same GameObject (or assign manually in Inspector)
-        staminaBar = FindObjectOfType<StaminaBar>();
+        staminaBar = FindAnyObjectByType<StaminaBar>();
         if (staminaBar == null)
         {
             Debug.LogError("StaminaBar reference not found! Make sure there's a StaminaBar component in the scene.");
