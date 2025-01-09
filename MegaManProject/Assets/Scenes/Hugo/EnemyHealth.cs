@@ -21,7 +21,6 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Instantiate(bloodSplatterParticleEffect, transform.position, Quaternion.identity);
         currentHealth -= damage;
         if (currentHealth < 0)
             currentHealth = 0;
@@ -48,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        Instantiate(bloodSplatterParticleEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
