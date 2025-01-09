@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float duration;
     [SerializeField] private Material originalMaterial;
     [SerializeField] GameObject bloodSplatterParticleEffect;
+    [SerializeField] GameObject mainCamera;
     private SpriteRenderer spriteRenderer;
     private Coroutine flashRoutine;
 
@@ -28,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
+
 
         Flash();
     }
