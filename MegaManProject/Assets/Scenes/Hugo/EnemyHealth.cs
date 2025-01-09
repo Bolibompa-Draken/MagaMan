@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float duration;
     [SerializeField] private Material originalMaterial;
+    [SerializeField] GameObject bloodSplatterParticleEffect;
     private SpriteRenderer spriteRenderer;
     private Coroutine flashRoutine;
 
@@ -20,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Instantiate(bloodSplatterParticleEffect, transform.position, Quaternion.identity);
         currentHealth -= damage;
         if (currentHealth < 0)
             currentHealth = 0;
