@@ -325,7 +325,8 @@ MonoBehaviour:
   maxStamina: 100
   staminaDrainRate: 10
   staminaRegenRate: 5
-  cooldownTime: 2
+  regenDelay: 2
+  currentStamina: 0
   staminaBar: {fileID: 978562165}
 --- !u!1 &828251190
 GameObject:
