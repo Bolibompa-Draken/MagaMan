@@ -13,11 +13,10 @@ public class Movement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    private StaminaBar staminaBar;  // Reference to StaminaBar script
+    private StaminaBar staminaBar;
 
     void Start()
     {
-        // Automatically find the StaminaBar component attached to the same GameObject (or assign manually in Inspector)
         staminaBar = FindAnyObjectByType<StaminaBar>();
         if (staminaBar == null)
         {
@@ -38,8 +37,7 @@ public class Movement : MonoBehaviour
         }
 
         currentSpeed = speed;
-
-        // Only allow running if stamina is greater than 0
+        
         if (Input.GetKey(KeyCode.LeftShift) && staminaBar != null && staminaBar.CurrentStamina > 0)
         {
             currentSpeed = sprintSpeed;

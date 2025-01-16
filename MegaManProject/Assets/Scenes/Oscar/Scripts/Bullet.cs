@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject hitEffectPrefab;
 
+    
+
     void Start()
     {
         rb.linearVelocity = transform.right * speed; 
@@ -37,6 +39,8 @@ public class Bullet : MonoBehaviour
             GameObject hitEffect = Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
             Destroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.duration);
             Destroy(gameObject);
+            
+            
         }
     }
     void DestroyBullet()
