@@ -9,6 +9,7 @@ public class StaminaBar : MonoBehaviour
     public float regenDelay = 2f;
     public float currentStamina;
     private bool isRegenerating = false;
+    [SerializeField] public bool infinitestamina = false;
 
     public Slider staminaBar;
     private bool isRunning = false;
@@ -29,6 +30,7 @@ public class StaminaBar : MonoBehaviour
         UpdateStaminaUI();
     }
 
+
     void HandleRunning()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -39,6 +41,7 @@ public class StaminaBar : MonoBehaviour
             isRunning = true;
             isRegenerating = false;
             cooldownTimer = 0f;  // Reset cooldown timer when running
+            if (infinitestamina) return;
             currentStamina -= staminaDrainRate * Time.deltaTime;
 
             if (currentStamina <= 0)
