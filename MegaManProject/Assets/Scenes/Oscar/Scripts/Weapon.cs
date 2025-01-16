@@ -1,3 +1,4 @@
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -10,6 +11,7 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public GameObject chargeBulletPrefab;
+    public CameraShake cameraShake;
 
     [Header("Charging Settings")]
     [SerializeField] private float chargeSpeed;
@@ -42,6 +44,8 @@ public class Weapon : MonoBehaviour
             Shoot();
             audioSource.clip = shootingClip;
             audioSource.Play();
+
+            StartCoroutine(cameraShake.Shake(0.15f, 0.4f));
         }
 
         if (Input.GetButton("Fire1") && chargeTime < 2)
