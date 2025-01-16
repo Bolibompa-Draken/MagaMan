@@ -45,7 +45,7 @@ public class Weapon : MonoBehaviour
             audioSource.clip = shootingClip;
             audioSource.Play();
 
-            StartCoroutine(cameraShake.Shake(0.15f, 0.4f));
+            StartCoroutine(cameraShake.Shake(1f, 0.9f));
         }
 
         if (Input.GetButton("Fire1") && chargeTime < 2)
