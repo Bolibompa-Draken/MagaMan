@@ -6,8 +6,9 @@
         [SerializeField] public int maxHealth = 10;
         [SerializeField] public int currentHealth;
         [SerializeField] public Slider healthSlider;
+        [SerializeField] public bool isInvincible = false;
 
-        void Start()
+    void Start()
         {
             currentHealth = maxHealth;
             healthSlider.maxValue = maxHealth;
@@ -15,6 +16,8 @@
         }
         public void TakeDamage(int damage)
         {
+
+        if (isInvincible) return;
             currentHealth -= damage;
 
             if (currentHealth < 0) currentHealth = 0;
