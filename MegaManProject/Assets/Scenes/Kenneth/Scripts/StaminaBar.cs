@@ -9,10 +9,13 @@ public class StaminaBar : MonoBehaviour
     public float regenDelay = 2f;
     public float currentStamina;
     private bool isRegenerating = false;
+    [SerializeField] public bool infinitestamina = false;
 
     public Slider staminaBar;
     private bool isRunning = false;
     private bool isStaminaEmpty = false;
+
+    private float cooldownTimer = 0f;  // Tracks the cooldown time for regen delay
 
     void Start()
     {
@@ -27,14 +30,18 @@ public class StaminaBar : MonoBehaviour
         UpdateStaminaUI();
     }
 
+
     void HandleRunning()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
 
+        // Check if the player is running (holding shift and moving)
         if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && Mathf.Abs(horizontal) > 0)
         {
             isRunning = true;
             isRegenerating = false;
+            cooldownTimer = 0f;  // Reset cooldown timer when running
+            if (infinitestamina) return;
             currentStamina -= staminaDrainRate * Time.deltaTime;
 
             if (currentStamina <= 0)
@@ -42,7 +49,7 @@ public class StaminaBar : MonoBehaviour
                 currentStamina = 0;
                 isRunning = false;
                 isStaminaEmpty = true;
-                Invoke(nameof(StartRegeneration), regenDelay);
+                Invoke(nameof(StartRegeneration), regenDelay);  // Start regeneration after 2 seconds delay
             }
         }
         else
@@ -50,10 +57,23 @@ public class StaminaBar : MonoBehaviour
             if (isRunning)
             {
                 isRunning = false;
-                Invoke(nameof(StartRegeneration), regenDelay);
+                cooldownTimer = regenDelay;  // Start the cooldown timer when player stops running
             }
         }
 
+        // If the cooldownTimer is greater than 0, decrement it
+        if (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+
+        // Only start regenerating if the cooldown timer has finished
+        if (cooldownTimer <= 0 && !isRunning && currentStamina < maxStamina)
+        {
+            isRegenerating = true;
+        }
+
+        // Stamina regeneration logic
         if (isRegenerating && currentStamina < maxStamina)
         {
             currentStamina += staminaRegenRate * Time.deltaTime;
@@ -70,6 +90,7 @@ public class StaminaBar : MonoBehaviour
 
     void StartRegeneration()
     {
+        // Called to start stamina regeneration after the regen delay
         isRegenerating = true;
     }
 

@@ -89,14 +89,14 @@ ScriptedImporter:
       guid: a1cc0bd06f4c3074595073aae69f15a5
       position: {x: 287.0694, y: 148.99104, z: 1}
       rotation: {x: 0, y: 0, z: 0.6920739, w: 0.72182673}
-      length: 77.2871
+      length: 77.28712
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: body 2
       guid: 902fc895fae7f5c40a2952c85ff2e8dc
-      position: {x: 77.28711, y: -0.000009631737, z: 1}
+      position: {x: 77.287125, y: -0.0000089898385, z: 1}
       rotation: {x: 0, y: 0, z: 0.059391048, w: 0.99823487}
       length: 74.18566
       parentId: 0
@@ -115,7 +115,7 @@ ScriptedImporter:
     - name: head 2
       guid: c3fdc066e0344a142861f0af22113f62
       position: {x: 95.92729, y: -0.00008933934, z: 3}
-      rotation: {x: 0, y: 0, z: 0.059046175, w: 0.9982553}
+      rotation: {x: 0, y: 0, z: 0.059046168, w: 0.99825525}
       length: 104.57699
       parentId: 2
       color:
@@ -124,25 +124,25 @@ ScriptedImporter:
     - name: right antenna
       guid: fe5338957fb6e804494787d6a49a90be
       position: {x: 180.51782, y: -146.52199, z: 1}
-      rotation: {x: 0, y: 0, z: -0.26090392, w: 0.9653648}
-      length: 31.365067
+      rotation: {x: 0, y: 0, z: -0.26090425, w: 0.9653647}
+      length: 31.365084
       parentId: 2
       color:
         serializedVersion: 2
         rgba: 4294901760
     - name: right antenna 1
       guid: f91681dfd4f257341886464bfa05a9d9
-      position: {x: 31.365095, y: 0.000003035193, z: 1}
-      rotation: {x: 0, y: 0, z: 0.13456878, w: 0.9909043}
-      length: 32.93701
+      position: {x: 31.365028, y: 0.000013776036, z: 1}
+      rotation: {x: 0, y: 0, z: 0.13456944, w: 0.99090415}
+      length: 32.937008
       parentId: 4
       color:
         serializedVersion: 2
         rgba: 4294902015
     - name: right antenna 2
       guid: 13f747421eeb6c941a54e12a2e7e8b13
-      position: {x: 32.93701, y: 0.0000071018476, z: 1}
-      rotation: {x: 0, y: 0, z: 0.03874637, w: 0.9992491}
+      position: {x: 32.937016, y: -0.00000040847226, z: 1}
+      rotation: {x: 0, y: 0, z: 0.03874601, w: 0.9992491}
       length: 45.590733
       parentId: 5
       color:
@@ -151,25 +151,25 @@ ScriptedImporter:
     - name: left antenna
       guid: 15e9c13855748e64cb05fe272573fe33
       position: {x: 169.25027, y: 182.52898, z: 2}
-      rotation: {x: 0, y: 0, z: 0.15707049, w: 0.9875874}
-      length: 44.222492
+      rotation: {x: 0, y: 0, z: 0.15707032, w: 0.98758745}
+      length: 44.22249
       parentId: 2
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: left antenna 1
       guid: f846729ccb80b034ea88153d9bc4d57a
-      position: {x: 44.222485, y: -0.000015931399, z: 2}
-      rotation: {x: 0, y: 0, z: 0.19440372, w: 0.9809216}
-      length: 42.14967
+      position: {x: 44.222485, y: -0.000006479874, z: 2}
+      rotation: {x: 0, y: 0, z: 0.19440417, w: 0.9809215}
+      length: 42.149693
       parentId: 7
       color:
         serializedVersion: 2
         rgba: 4286643968
     - name: left antenna 2
       guid: a225300766fab674bbf38f289d06db9c
-      position: {x: 42.1497, y: 0.000016929182, z: 2}
-      rotation: {x: 0, y: 0, z: 0.07097931, w: 0.9974778}
+      position: {x: 42.14966, y: -0.00002825667, z: 2}
+      rotation: {x: 0, y: 0, z: 0.07097903, w: 0.9974779}
       length: 49.48239
       parentId: 8
       color:
@@ -187,16 +187,16 @@ ScriptedImporter:
     - name: left arm 1
       guid: cb983f79ab616e74e98a0aaf37d2e74d
       position: {x: 64.37275, y: -0.00000021088181, z: 2}
-      rotation: {x: 0, y: 0, z: -0.08651505, w: 0.99625057}
-      length: 46.67904
+      rotation: {x: 0, y: 0, z: -0.086514875, w: 0.99625057}
+      length: 46.679043
       parentId: 10
       color:
         serializedVersion: 2
         rgba: 4286578943
     - name: left arm 2
       guid: fb631f4c0d6164442b2000accd4fdfc7
-      position: {x: 46.679043, y: 0.000020756965, z: 2}
-      rotation: {x: 0, y: 0, z: -0.062013272, w: -0.99807537}
+      position: {x: 46.67905, y: -0.0000057324164, z: 2}
+      rotation: {x: 0, y: 0, z: -0.062013052, w: -0.9980754}
       length: 35.10244
       parentId: 11
       color:
@@ -205,25 +205,25 @@ ScriptedImporter:
     - name: right arm
       guid: eae7e21f71e029d449b0a4c592a1b1c9
       position: {x: 178.22751, y: -78.73164, z: 0}
-      rotation: {x: 0, y: -0, z: -0.9121246, w: 0.40991312}
-      length: 66.68159
+      rotation: {x: 0, y: -0, z: -0.91212463, w: 0.40991312}
+      length: 66.68161
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4278255360
     - name: right arm 1
       guid: 07152ffbe8eb1ff489dc510d8aea42be
-      position: {x: 66.681625, y: -0.0000125494735, z: 0}
-      rotation: {x: 0, y: 0, z: 0.12693319, w: 0.9919113}
-      length: 36.396065
+      position: {x: 66.68159, y: 0.000012117769, z: 0}
+      rotation: {x: 0, y: 0, z: 0.12693341, w: 0.99191123}
+      length: 36.39605
       parentId: 13
       color:
         serializedVersion: 2
         rgba: 4294967040
     - name: right arm 2
       guid: 6352d4f495f58ac4f8710d8c5c982234
-      position: {x: 36.39606, y: 0.000010888914, z: 0}
-      rotation: {x: 0, y: 0, z: 0.061460093, w: 0.9981096}
+      position: {x: 36.396023, y: 0.000012622797, z: 0}
+      rotation: {x: 0, y: 0, z: 0.061459977, w: 0.9981096}
       length: 29.887287
       parentId: 14
       color:
@@ -240,17 +240,17 @@ ScriptedImporter:
         rgba: 4294902015
     - name: left leg 1
       guid: 57c37b17bd515fa4cb5e31d3de9dd50f
-      position: {x: 57.71641, y: 0.000041164265, z: 2}
+      position: {x: 57.71641, y: 0.000056421537, z: 2}
       rotation: {x: 0, y: 0, z: 0.021770993, w: 0.999763}
-      length: 42.337276
+      length: 42.33728
       parentId: 16
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: left leg 2
       guid: c3e0fd898861c0448a1e6d880f3485e7
-      position: {x: 42.337284, y: 0.000038834394, z: 2}
-      rotation: {x: 0, y: 0, z: -0.008824831, w: 0.9999611}
+      position: {x: 42.337288, y: 0.00003858935, z: 2}
+      rotation: {x: 0, y: 0, z: -0.008824829, w: 0.9999611}
       length: 40.673855
       parentId: 17
       color:
@@ -259,25 +259,25 @@ ScriptedImporter:
     - name: 'right leg '
       guid: 70204205bd816d340ba0dc4e8b8cb44a
       position: {x: 21.71315, y: -129.25327, z: 0}
-      rotation: {x: 0, y: -0, z: -0.9950292, w: 0.099583834}
-      length: 51.84922
+      rotation: {x: 0, y: -0, z: -0.9950292, w: 0.099583715}
+      length: 51.849213
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4286643968
     - name: right leg 1
       guid: c86a398bb1ec4ed4fb25a00c771ba555
-      position: {x: 51.849205, y: -0.0000028731938, z: 0}
-      rotation: {x: 0, y: 0, z: -0.047484256, w: 0.998872}
-      length: 39.091846
+      position: {x: 51.8492, y: -0.000006990779, z: 0}
+      rotation: {x: 0, y: 0, z: -0.047484886, w: 0.998872}
+      length: 39.09184
       parentId: 19
       color:
         serializedVersion: 2
         rgba: 4294934528
     - name: right leg 2
       guid: 5ad8beb5b90f52344a68d39bb1510226
-      position: {x: 39.091843, y: -0.000024268258, z: 0}
-      rotation: {x: 0, y: 0, z: 0.028503949, w: 0.99959373}
+      position: {x: 39.091835, y: 0.0000072658777, z: 0}
+      rotation: {x: 0, y: 0, z: 0.028504703, w: 0.9995937}
       length: 40.932823
       parentId: 20
       color:
@@ -5120,7 +5120,7 @@ ScriptedImporter:
   characterMode: 1
   documentPivot: {x: 0.5, y: 0}
   documentAlignment: 7
-  importHiddenLayers: 0
+  importHiddenLayers: 1
   layerMappingOption: 2
   generatePhysicsShape: 0
   paperDollMode: 0
@@ -5134,7 +5134,55 @@ ScriptedImporter:
     categories: []
   spritePackingTag: 
   resliceFromLayer: 0
-  pSDLayerImportSetting: []
+  pSDLayerImportSetting:
+  - spriteId: 6a49277134dcec14e8d40f344e663d2d
+    name: anytenna left
+    layerId: 9
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: d4bcba584c3ad344082a6f91bf50c2f3
+    name: head
+    layerId: 10
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: d540cd8fce7d5ea4eaafddc0f3b950d8
+    name: antenna right
+    layerId: 8
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: b114ac97a681e7f4497409c53fb96d65
+    name: left arm
+    layerId: 7
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: 1060cedea0aee51409048300e8fd419c
+    name: left leg
+    layerId: 6
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: 0dcaf9988cfb825418795e9f49932f13
+    name: body
+    layerId: 5
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: 585ed9f3f78826c468c6d593c0ed5ee6
+    name: right arm
+    layerId: 4
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  - spriteId: 6f1405fbe9709c645ab6ecee06146ccc
+    name: right leg
+    layerId: 3
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
   psdLayers:
   - name: head
     spriteName: head
