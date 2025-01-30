@@ -1,16 +1,17 @@
 using UnityEngine;
 
-public class Firerate : MonoBehaviour
+public class FireRatePickup : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float fireRateMultiplier = 4f;
+    [SerializeField] private float duration = 20f;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        Weapon playerWeapon = collision.GetComponent<Weapon>();
+        if (playerWeapon != null)
+        {
+            playerWeapon.ActivateFireRatePowerUp();
+            Destroy(gameObject);
+        }
     }
 }
