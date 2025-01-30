@@ -4,29 +4,36 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    public IEnumerator Shake(float duration, float magnitude)
+    [SerializeField] Vector3 mousePosition;
+    [SerializeField] UnityEngine.Camera mainCamera;
+    [SerializeField] Transform targetCamera;
+
+    private void Update()
     {
-        Vector3 originalPos = transform.position;
-
-        float elasped = 1f;
-
-        float xValue = 1;
-        float yValue = 1;
-
-        while (elasped < duration)
-        {
-            xValue = Random.Range(-0.25f, 0.25f) * magnitude;
-            yValue = Random.Range(-0.25f, 0.25f) * magnitude;
-
-            
-        }
-
-        transform.position += new Vector3(xValue, yValue, originalPos.z);
-
-        elasped += Time.deltaTime;
-
-        yield return null;
-
-        transform.position = originalPos;
+        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 direction = (mousePosition - targetCamera.position).normalized;
     }
+
+    //public IEnumerator Shake(float duration, )
+    //{
+    //    Vector3 direction = (mousePosition - targetCamera.position).normalized;
+
+    //}
+    //public IEnumerator Shake(float duration, float magnitude)
+    //{
+    //    Vector3 originalPos = transform.position;
+    //    float elasped = 1f;
+    //    float xValue = 1;
+    //    float yValue = 1;
+
+    //    while (elasped < duration)
+    //    {
+
+    //    }
+    //    elasped += Time.deltaTime;
+
+
+
+    //}
+
 }
