@@ -56,7 +56,7 @@ public class Weapon : MonoBehaviour
             audioSource.clip = shootingClip;
             audioSource.Play();
 
-            StartCoroutine(cameraShake.Shake(1f, 0.9f));
+            //StartCoroutine(cameraShake.Shake(1f, 0.9f));
         }
 
         if (Input.GetButton("Fire2") && chargeTime < 2)
@@ -151,7 +151,6 @@ public class Weapon : MonoBehaviour
     {
         if (collision.CompareTag("FireRatePowerUp"))
         {
-            Debug.Log($"Collision detected with: {collision.name}");
             ActivateFireRatePowerUp();
             Destroy(collision.gameObject);
         }

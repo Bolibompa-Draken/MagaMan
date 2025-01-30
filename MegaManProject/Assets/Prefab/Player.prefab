@@ -56,6 +56,9 @@ MonoBehaviour:
   chargeTime: 0
   chargeClip: {fileID: 8300000, guid: 8dc4d91d4f16a934aa41540781769a8f, type: 3}
   shootingClip: {fileID: 8300000, guid: 6fa587d7d30f98b47adee7f44162c4b5, type: 3}
+  fireRate: 1
+  boostedFireRateMultiplier: 3
+  powerUpDuration: 20
   playerTransform: {fileID: 927346822707217248}
   weaponTransfrom: {fileID: 2869231016973032089}
 --- !u!82 &506281877090357188
