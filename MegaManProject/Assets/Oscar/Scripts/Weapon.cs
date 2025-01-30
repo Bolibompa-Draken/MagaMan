@@ -56,7 +56,7 @@ public class Weapon : MonoBehaviour
             audioSource.clip = shootingClip;
             audioSource.Play();
 
-            //StartCoroutine(cameraShake.Shake(1f, 0.9f));
+           // StartCoroutine(cameraShake.Shake(1f, 0.9f));
         }
 
         if (Input.GetButton("Fire2") && chargeTime < 2)
@@ -96,7 +96,7 @@ public class Weapon : MonoBehaviour
 
         if (Vector2.Distance(mousePosition, transform.position) > 0.1)
         {
-            OrbitAroundPlayer();
+           OrbitAroundPlayer();
 
             if (mousePosition.x < playerTransform.position.x)
             {
