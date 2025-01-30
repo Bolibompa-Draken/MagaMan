@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Movement : MonoBehaviour
 {
@@ -14,13 +15,25 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     private StaminaBar staminaBar;
+    private Weapon weapon; // Reference to Weapon script
+
+    [Header("Fire Rate Power-Up")]
+    [SerializeField] private float boostedFireRateMultiplier = 3f;
+    [SerializeField] private float powerUpDuration = 20f;
+    private bool isFireRateBoosted = false;
 
     void Start()
     {
         staminaBar = FindAnyObjectByType<StaminaBar>();
         if (staminaBar == null)
         {
-            Debug.LogError("StaminaBar reference not found! Make sure there's a StaminaBar component in the scene.");
+            Debug.LogError("StaminaBar reference not found!");
+        }
+
+        weapon = FindAnyObjectByType<Weapon>(); // Find the Weapon script
+        if (weapon == null)
+        {
+            Debug.LogError("Weapon script not found!");
         }
     }
 
@@ -37,7 +50,7 @@ public class Movement : MonoBehaviour
         }
 
         currentSpeed = speed;
-        
+
         if (Input.GetKey(KeyCode.LeftShift) && staminaBar != null && staminaBar.CurrentStamina > 0)
         {
             currentSpeed = sprintSpeed;
@@ -57,5 +70,34 @@ public class Movement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("FireRatePowerUp"))
+        {
+            ActivateFireRatePowerUp();
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void ActivateFireRatePowerUp()
+    {
+        if (!isFireRateBoosted && weapon != null)
+        {
+            StartCoroutine(FireRatePowerUpCoroutine());
+        }
+    }
+
+    private IEnumerator FireRatePowerUpCoroutine()
+    {
+        isFireRateBoosted = true;
+        float originalFireRate = weapon.fireRate;
+        weapon.fireRate *= boostedFireRateMultiplier;
+
+        yield return new WaitForSeconds(powerUpDuration);
+
+        weapon.fireRate = originalFireRate;
+        isFireRateBoosted = false;
     }
 }

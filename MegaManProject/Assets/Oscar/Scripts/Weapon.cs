@@ -1,4 +1,3 @@
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using System.Collections;
 
@@ -24,18 +23,11 @@ public class Weapon : MonoBehaviour
 
     [Header("Fire Rate Settings")]
     public float fireRate = 1f;
-    private float nextFireTime = 0f;
+    private float fireTimer = 0f;
     private bool isFireRateBoosted = false;
 
-    [SerializeField] private float boostedFireRateMultiplier = 3f;
-    [SerializeField] private float powerUpDuration = 20f;
-
-    private bool IsCharging;
     private AudioSource audioSource;
     private UnityEngine.Camera mainCamera;
-
-    [SerializeField] Transform playerTransform;
-    [SerializeField] Transform weaponTransfrom;
 
     private void Start()
     {
@@ -48,25 +40,22 @@ public class Weapon : MonoBehaviour
         OrbitAroundPlayer();
         AimAtMouse();
 
-        if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
+        
+        fireTimer += Time.deltaTime;
+
+        
+        if (Input.GetButton("Fire1") && fireTimer >= 1f / fireRate)
         {
             Shoot();
-            nextFireTime = Time.time + 1f / fireRate;
+            fireTimer = 0f; 
 
             audioSource.clip = shootingClip;
             audioSource.Play();
-
-           // StartCoroutine(cameraShake.Shake(1f, 0.9f));
         }
 
         if (Input.GetButton("Fire2") && chargeTime < 2)
         {
-            IsCharging = true;
-
-            if (IsCharging)
-            {
-                chargeTime += Time.deltaTime * chargeSpeed;
-            }
+            chargeTime += Time.deltaTime * chargeSpeed;
         }
 
         if (Input.GetButtonUp("Fire2") && chargeTime >= 2)
@@ -94,25 +83,9 @@ public class Weapon : MonoBehaviour
         Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0f;
 
-        if (Vector2.Distance(mousePosition, transform.position) > 0.1)
-        {
-           OrbitAroundPlayer();
-
-            if (mousePosition.x < playerTransform.position.x)
-            {
-                playerTransform.rotation = Quaternion.Euler(0, 180, 0);
-                weaponTransfrom.localScale = new Vector3(1, -1, 1);
-            }
-            else
-            {
-                playerTransform.rotation = Quaternion.Euler(0, 0, 0);
-                weaponTransfrom.localScale = new Vector3(1, 1, 1);
-            }
-
-            Vector3 aimDirection = (mousePosition - firePoint.position).normalized;
-            float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-            firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
-        }
+        Vector3 aimDirection = (mousePosition - firePoint.position).normalized;
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     private void Shoot()
@@ -123,36 +96,6 @@ public class Weapon : MonoBehaviour
     private void ReleaseCharge()
     {
         Instantiate(chargeBulletPrefab, firePoint.position, firePoint.rotation);
-        IsCharging = false;
         chargeTime = 0;
-    }
-
-    public void ActivateFireRatePowerUp()
-    {
-        if (!isFireRateBoosted)
-        {
-            StartCoroutine(FireRatePowerUpCoroutine());
-        }
-    }
-
-    private IEnumerator FireRatePowerUpCoroutine()
-    {
-        isFireRateBoosted = true;
-        float originalFireRate = fireRate;
-        fireRate *= boostedFireRateMultiplier;
-
-        yield return new WaitForSeconds(powerUpDuration);
-
-        fireRate = originalFireRate;
-        isFireRateBoosted = false;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("FireRatePowerUp"))
-        {
-            ActivateFireRatePowerUp();
-            Destroy(collision.gameObject);
-        }
     }
 }
