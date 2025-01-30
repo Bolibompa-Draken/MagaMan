@@ -3,7 +3,11 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public bool isRunning = false;
-    private float horizontal;
+    public bool AisRunning = false;
+    public bool isJumpingUp = false;
+    public bool isJumpingDown = false;
+    public bool isIdle = false;
+    public float horizontal;
     private float speed = 8f;
     private float currentSpeed;
     private float sprintSpeed = 16f;
@@ -14,14 +18,18 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     private StaminaBar staminaBar;
+    public Animator animator;
+
 
     void Start()
     {
         staminaBar = FindAnyObjectByType<StaminaBar>();
         if (staminaBar == null)
         {
+           
             Debug.LogError("StaminaBar reference not found! Make sure there's a StaminaBar component in the scene.");
         }
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -30,6 +38,7 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
+            isJumpingUp = true;
         }
         if (Input.GetButtonUp("Jump") && rb.linearVelocity.y < 0)
         {
@@ -47,6 +56,28 @@ public class Movement : MonoBehaviour
         {
             isRunning = false;
         }
+        if (rb.linearVelocity.y < 0)
+        {
+            isJumpingUp = false;
+            isJumpingDown = true; 
+        }
+        else if (rb.linearVelocity.y > 0)
+        {
+            isJumpingDown = false;
+        }
+        if (IsGrounded() && rb.linearVelocity.y == 0)
+        {
+            isJumpingUp = false;
+            isJumpingDown = false;
+        }
+        
+        isIdle = horizontal == 0 && IsGrounded();
+        AisRunning = horizontal != 0;
+
+        animator.SetBool("AisRunning", AisRunning);
+        animator.SetBool("isJumpingUp", isJumpingUp);
+        animator.SetBool("isJumpingDown", isJumpingDown);
+        animator.SetBool("isIdle", isIdle);
     }
 
     private void FixedUpdate()
