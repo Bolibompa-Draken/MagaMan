@@ -1,5 +1,6 @@
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
+using System.Collections;
 
 public class Weapon : MonoBehaviour
 {
@@ -21,6 +22,14 @@ public class Weapon : MonoBehaviour
     [SerializeField] private AudioClip chargeClip;
     [SerializeField] private AudioClip shootingClip;
 
+    [Header("Fire Rate Settings")]
+    public float fireRate = 1f;
+    private float nextFireTime = 0f;
+    private bool isFireRateBoosted = false;
+
+    [SerializeField] private float boostedFireRateMultiplier = 3f;
+    [SerializeField] private float powerUpDuration = 20f;
+
     private bool IsCharging;
     private AudioSource audioSource;
     private UnityEngine.Camera mainCamera;
@@ -39,13 +48,15 @@ public class Weapon : MonoBehaviour
         OrbitAroundPlayer();
         AimAtMouse();
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
         {
             Shoot();
+            nextFireTime = Time.time + 1f / fireRate;
+
             audioSource.clip = shootingClip;
             audioSource.Play();
 
-           // StartCoroutine(cameraShake.Shake(1f, 0.9f));
+            StartCoroutine(cameraShake.Shake(1f, 0.9f));
         }
 
         if (Input.GetButton("Fire2") && chargeTime < 2)
@@ -87,7 +98,6 @@ public class Weapon : MonoBehaviour
         {
             OrbitAroundPlayer();
 
-         
             if (mousePosition.x < playerTransform.position.x)
             {
                 playerTransform.rotation = Quaternion.Euler(0, 180, 0);
@@ -96,10 +106,9 @@ public class Weapon : MonoBehaviour
             else
             {
                 playerTransform.rotation = Quaternion.Euler(0, 0, 0);
-                weaponTransfrom.localScale = new Vector3(1, 1, 1); 
+                weaponTransfrom.localScale = new Vector3(1, 1, 1);
             }
 
-            
             Vector3 aimDirection = (mousePosition - firePoint.position).normalized;
             float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
             firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
@@ -117,7 +126,34 @@ public class Weapon : MonoBehaviour
         IsCharging = false;
         chargeTime = 0;
     }
+
+    public void ActivateFireRatePowerUp()
+    {
+        if (!isFireRateBoosted)
+        {
+            StartCoroutine(FireRatePowerUpCoroutine());
+        }
+    }
+
+    private IEnumerator FireRatePowerUpCoroutine()
+    {
+        isFireRateBoosted = true;
+        float originalFireRate = fireRate;
+        fireRate *= boostedFireRateMultiplier;
+
+        yield return new WaitForSeconds(powerUpDuration);
+
+        fireRate = originalFireRate;
+        isFireRateBoosted = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("FireRatePowerUp"))
+        {
+            Debug.Log($"Collision detected with: {collision.name}");
+            ActivateFireRatePowerUp();
+            Destroy(collision.gameObject);
+        }
+    }
 }
-
-
-
