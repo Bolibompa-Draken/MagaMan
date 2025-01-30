@@ -7,18 +7,24 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float duration;
     [SerializeField] private Material originalMaterial;
-    [SerializeField] GameObject bloodSplatterParticleEffect;
     [SerializeField] GameObject mainCamera;
     private SpriteRenderer spriteRenderer;
     private Coroutine flashRoutine;
+    private EnemyController enemyController;
 
     void Start()
     {
         currentHealth = maxHealth;
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
+
+        enemyController = GetComponent<EnemyController>();
+        if (enemyController == null)
+        {
+            Debug.LogError("EnemyController component missing from this object!");
+        }
     }
+
 
     public void TakeDamage(int damage)
     {
@@ -49,17 +55,21 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        Instantiate(bloodSplatterParticleEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        
+
+        if (enemyController != null)
+        {
+            enemyController.Die();
+        }
     }
 
 
     public void Flash()
     {
-        
+
         if (flashRoutine != null)
         {
-            
+
             StopCoroutine(flashRoutine);
         }
         flashRoutine = StartCoroutine(FlashRoutine());

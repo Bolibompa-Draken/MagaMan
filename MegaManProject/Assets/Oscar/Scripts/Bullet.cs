@@ -26,6 +26,10 @@ public class Bullet : MonoBehaviour
             GameObject hitEffect = Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
             Destroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.duration);
             Destroy(gameObject);
+            if (collision.CompareTag("Player"))
+            {
+                return;
+            }
         }
 
         if (collision.CompareTag("Enemy"))

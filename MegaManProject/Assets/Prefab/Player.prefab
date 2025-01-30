@@ -85,7 +85,7 @@ SpriteRenderer:
   m_Size: {x: 2.675, y: 4.1583333}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!96 &2672445406660551903
@@ -361,11 +361,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRunning: 0
+  AisRunning: 0
+  isJumpingUp: 0
+  isJumpingDown: 0
+  isIdle: 0
+  horizontal: 0
   rb: {fileID: 16354088589356366}
   groundCheck: {fileID: 5455708821198806548}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  animator: {fileID: 0}
+  boostedFireRateMultiplier: 3
+  powerUpDuration: 20
 --- !u!114 &4711353622166301419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,10 +552,6 @@ MonoBehaviour:
   chargeClip: {fileID: 8300000, guid: 8dc4d91d4f16a934aa41540781769a8f, type: 3}
   shootingClip: {fileID: 8300000, guid: 6fa587d7d30f98b47adee7f44162c4b5, type: 3}
   fireRate: 1
-  boostedFireRateMultiplier: 3
-  powerUpDuration: 20
-  playerTransform: {fileID: 927346822707217248}
-  weaponTransfrom: {fileID: 7453625780339481023}
 --- !u!82 &2295362773368591708
 AudioSource:
   m_ObjectHideFlags: 0
