@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
@@ -8,14 +9,23 @@ public class CameraShake : MonoBehaviour
     public float shakeDuration = 0.1f;
     public float shakeStrength = 0.2f;
 
-    public void ShakeCamera(Vector3 shotDirection)
+    void Update()
     {
-        StartCoroutine(ShakeRoutine(shotDirection));
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 shotDirection = transform.forward;
+            ShakeCamera(shotDirection);
+        }
     }
 
-    private IEnumerator ShakeRoutine(Vector3 direction)
+    public void ShakeCamera(Vector3 shotDirection)
     {
-        Vector3 originalPos = cameraTransform.localPosition;
+        StartCoroutine(Shake(shotDirection));
+    }
+
+    public IEnumerator Shake(Vector3 direction)
+    {
+        Vector3 originalPos = cameraTransform.position;
         float elapsed = 0f;
 
         while (elapsed < shakeDuration)
