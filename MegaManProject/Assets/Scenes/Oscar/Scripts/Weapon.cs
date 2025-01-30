@@ -36,7 +36,7 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-      //  OrbitAroundPlayer();
+        OrbitAroundPlayer();
         AimAtMouse();
 
         if (Input.GetButtonDown("Fire1"))
@@ -45,10 +45,10 @@ public class Weapon : MonoBehaviour
             audioSource.clip = shootingClip;
             audioSource.Play();
 
-            StartCoroutine(cameraShake.Shake(1f, 0.9f));
+           // StartCoroutine(cameraShake.Shake(1f, 0.9f));
         }
 
-        if (Input.GetButton("Fire1") && chargeTime < 2)
+        if (Input.GetButton("Fire2") && chargeTime < 2)
         {
             IsCharging = true;
 
@@ -58,12 +58,12 @@ public class Weapon : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("Fire1") && chargeTime >= 2)
+        if (Input.GetButtonUp("Fire2") && chargeTime >= 2)
         {
             ReleaseCharge();
         }
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire2"))
         {
             chargeTime = 0;
         }
