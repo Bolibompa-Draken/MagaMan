@@ -3,12 +3,12 @@ using System.Collections;
 
 public class Movement : MonoBehaviour
 {
-    public bool isRunning = false;
-    public bool AisRunning = false;
-    public bool isJumpingUp = false;
-    public bool isJumpingDown = false;
-    public bool isIdle = false;
-    public float horizontal;
+    private bool isRunning = false;
+    private bool AisRunning = false;
+    private bool isJumpingUp = false;
+    private bool isJumpingDown = false;
+    private bool isIdle = false;
+    private float horizontal;
     private float speed = 8f;
     private float currentSpeed;
     private float sprintSpeed = 16f;

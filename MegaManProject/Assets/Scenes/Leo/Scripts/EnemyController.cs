@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     GameObject player;
     Animator animator;
-    SpriteRenderer spriteRenderer;  
+    SpriteRenderer spriteRenderer;
 
     [SerializeField] bool isPaused = false;
     [SerializeField] private float moveSpeed = 3f;
@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
 
     bool isAlive = false;
     bool isAttacking = false;
+    private Vector3 initialScale;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class EnemyController : MonoBehaviour
         }
 
         isAlive = true;
+        initialScale = transform.localScale;
         SetIdleState();
     }
 
@@ -55,16 +57,14 @@ public class EnemyController : MonoBehaviour
 
     private void FlipSprite()
     {
-        
+       
         if (player.transform.position.x < transform.position.x)
         {
-          
-            spriteRenderer.flipX = true;
+            transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
         }
         else
         {
-          
-            spriteRenderer.flipX = false;
+            transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
         }
     }
 
@@ -78,6 +78,7 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator HandleAttack()
     {
+        Damage.isPaused = false;
         isPaused = true;
         isAttacking = true;
 
@@ -120,5 +121,6 @@ public class EnemyController : MonoBehaviour
         throw new NotImplementedException();
     }
 }
+
 
 
