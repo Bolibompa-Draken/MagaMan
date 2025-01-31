@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8727454643748178353}
   - component: {fileID: 6672625772686798411}
   m_Layer: 3
-  m_Name: alien sprite_1
+  m_Name: Alien
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
