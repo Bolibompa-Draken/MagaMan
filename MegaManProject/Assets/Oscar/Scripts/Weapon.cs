@@ -86,7 +86,18 @@ public class Weapon : MonoBehaviour
         Vector3 aimDirection = (mousePosition - firePoint.position).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
+
+       
+        if ((mousePosition.x < player.position.x && player.localScale.x > 0) ||
+            (mousePosition.x > player.position.x && player.localScale.x < 0))
+        {
+           
+            player.localScale = new Vector3(-player.localScale.x, player.localScale.y, player.localScale.z);
+        }
     }
+
+
+
 
     private void Shoot()
     {
