@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2382337656435030090}
   - component: {fileID: 6171484506614807293}
   - component: {fileID: 2797081425151319236}
+  - component: {fileID: 5859202465319278450}
   m_Layer: 8
   m_Name: FireRateUpgrade
   m_TagString: FireRatePowerUp
@@ -152,3 +153,25 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.025795937, y: 0.020986438}
   m_Radius: 0.617105
+--- !u!95 &5859202465319278450
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293819369407591273}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e93df580b31f1ce478ca7f1450f63948, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
