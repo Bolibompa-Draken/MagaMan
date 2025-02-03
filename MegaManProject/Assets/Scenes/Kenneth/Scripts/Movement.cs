@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
 
     private StaminaBar staminaBar;
     public Animator animator;
-    private Weapon weapon; // Reference to Weapon script
+    public Weapon weapon; 
 
     [Header("Fire Rate Power-Up")]
     [SerializeField] private float boostedFireRateMultiplier = 3f;

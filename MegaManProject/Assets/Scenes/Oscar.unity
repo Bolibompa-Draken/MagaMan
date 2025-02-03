@@ -1141,8 +1141,16 @@ PrefabInstance:
       value: -1.694
       objectReference: {fileID: 0}
     - target: {fileID: 6623730070619782220, guid: 612594a9f0b573c499383624d0a34ceb, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 866044685}
+    - target: {fileID: 6623730070619782220, guid: 612594a9f0b573c499383624d0a34ceb, type: 3}
       propertyPath: isRunning
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8061562104206272611, guid: 612594a9f0b573c499383624d0a34ceb, type: 3}
+      propertyPath: fireRate
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8727454643748178353, guid: 612594a9f0b573c499383624d0a34ceb, type: 3}
       propertyPath: maxStamina
@@ -1157,6 +1165,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 612594a9f0b573c499383624d0a34ceb, type: 3}
+--- !u!114 &866044685 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8061562104206272611, guid: 612594a9f0b573c499383624d0a34ceb, type: 3}
+  m_PrefabInstance: {fileID: 866044684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433dd4b458eb8214cbd8c10f80d03ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &887797639
 PrefabInstance:
   m_ObjectHideFlags: 0
