@@ -252,6 +252,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   animator: {fileID: 7221514024319854456}
+  weapon: {fileID: 8061562104206272611}
   boostedFireRateMultiplier: 3
   powerUpDuration: 20
 --- !u!114 &3816849864859542996
@@ -282,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5242b3f0f7fe44bb85b3da4c22ce92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 100
+  maxStamina: 50
   staminaDrainRate: 20
   staminaRegenRate: 15
   regenDelay: 2
@@ -1047,7 +1048,7 @@ MonoBehaviour:
   chargeTime: 0.12
   chargeClip: {fileID: 8300000, guid: 6fa587d7d30f98b47adee7f44162c4b5, type: 3}
   shootingClip: {fileID: 8300000, guid: 8dc4d91d4f16a934aa41540781769a8f, type: 3}
-  fireRate: 1
+  fireRate: 2
 --- !u!1 &7888792652920344891
 GameObject:
   m_ObjectHideFlags: 0
