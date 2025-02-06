@@ -12,7 +12,7 @@ public class CameraShake : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             Vector3 shotDirection = transform.forward;
             ShakeCamera(shotDirection);
