@@ -86,7 +86,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void Flash()
     {
-
+        Debug.Log("Flash");
         if (flashRoutine != null)
         {
 

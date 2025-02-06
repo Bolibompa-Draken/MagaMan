@@ -57,7 +57,9 @@ public class Weapon : MonoBehaviour
 
             audioSource.clip = shootingClip;
             audioSource.Play();
+            isShooting = true;
             Recoil();
+            isShooting = false;
         }
 
         if (Input.GetButton("Fire2") && chargeTime < 1)
@@ -69,8 +71,9 @@ public class Weapon : MonoBehaviour
         if (Input.GetButtonUp("Fire2") && chargeTime >= 1)
         {
             ReleaseCharge();
+            isShooting = true;
             Recoil();
-           
+            isShooting = false;
         }
 
         if (Input.GetButtonUp("Fire2"))
@@ -160,12 +163,15 @@ public class Weapon : MonoBehaviour
     {
         if (isAimingRight == true && isShooting == true)
         {
-            playerRB.AddRelativeForce(Vector2.right * 100, ForceMode2D.Impulse);
+            player.position += Vector3.left * 0.15f;
+            Debug.Log("Pushed to the left");
         }
         else if (isAimingRight == false && isShooting == true)
         {
-            playerRB.AddRelativeForce(Vector2.left * 100, ForceMode2D.Impulse);
+            player.position += Vector3.right * 0.15f;
+            Debug.Log("Pushed to the right");
         }
     }
+
 
 }
