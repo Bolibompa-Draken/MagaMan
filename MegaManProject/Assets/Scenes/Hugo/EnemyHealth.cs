@@ -8,12 +8,12 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float duration;
     [SerializeField] private Material originalMaterial;
     [SerializeField] GameObject mainCamera;
-    private SpriteRenderer spriteRenderer;
-    private Coroutine flashRoutine;
-    private Collider2D boxCollider;
-    private Rigidbody2D rigidbodyrb;
-    private Damage damagescript;
-    private EnemyController enemyController;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Coroutine flashRoutine;
+    [SerializeField] private Collider2D boxCollider;
+    [SerializeField] private Rigidbody2D rigidbodyrb;
+    [SerializeField] private Damage damagescript;
+    [SerializeField] private EnemyController enemyController;
     [SerializeField] public GameObject[] Powerup;
 
     void Start()
@@ -73,7 +73,7 @@ public class EnemyHealth : MonoBehaviour
         }
         if (damagescript != null)
         {
-            Destroy(damagescript);
+            Destroy(damagescript); // kanske onödigt då boxcollidern är avstängd men är med ändå
         }
 
         if (Powerup.Length > 0 && Random.value <= 0.3f)

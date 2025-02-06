@@ -1,30 +1,45 @@
     using UnityEngine;
     using UnityEngine.UI;
+    using UnityEngine.SceneManagement;
 
-    public class Health : MonoBehaviour
-    {
-        [SerializeField] public int maxHealth = 10;
-        [SerializeField] public int currentHealth;
-        [SerializeField] public Slider healthSlider;
-        [SerializeField] public bool isInvincible = false;
+public class Health : MonoBehaviour
+{
+    [SerializeField] public int maxHealth = 10;
+    [SerializeField] public int currentHealth;
+    [SerializeField] public Slider healthSlider;
+    [SerializeField] public bool isInvincible = false;
 
     void Start()
-        {
-            currentHealth = maxHealth;
-            healthSlider.maxValue = maxHealth;
-            healthSlider.value = currentHealth;
-        }
-        public void TakeDamage(int damage)
-        {
+    {
+        currentHealth = maxHealth;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
+    }
+
+    private void Die()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
+
+
+    public void TakeDamage(int damage)
+    {
 
         if (isInvincible) return;
-            currentHealth -= damage;
+        currentHealth -= damage;
 
-            if (currentHealth < 0) currentHealth = 0;
-
-            healthSlider.value = currentHealth;
+        if (currentHealth < 0)
+            currentHealth = 0;
+        if (currentHealth <= 0)
+        {
+            Die();
         }
-        public void Heal(int amount)
+
+        healthSlider.value = currentHealth;
+    }
+
+
+    public void Heal(int amount)
         {
             currentHealth += amount;
 
@@ -36,4 +51,4 @@
         {
             return currentHealth;
         }
-    }
+}
