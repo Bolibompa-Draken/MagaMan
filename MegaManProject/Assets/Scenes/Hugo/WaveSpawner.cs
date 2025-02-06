@@ -7,8 +7,8 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnpoints;
     [SerializeField] float spawninterval = 10f;
     [SerializeField] private float spawnincreaserate = 1.2f;
-    private int enemiesperwave = 1;
-    private float nextwave;
+    [SerializeField] private int enemiesperwave = 1;
+    [SerializeField] private float nextwave;
 
     private void Start()
     {

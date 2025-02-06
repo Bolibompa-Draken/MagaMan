@@ -17,5 +17,11 @@ public class SceneChanger : MonoBehaviour
             Debug.LogWarning("Scene name is not set!");
         }
     }
+
+  public void doExitGame()
+        {
+        Application.Quit();
+        Debug.Log("du lämnade spelet");
+        }
 }
 
