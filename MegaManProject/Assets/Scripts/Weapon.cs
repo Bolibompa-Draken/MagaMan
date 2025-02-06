@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
     [Header("Player Settings")]
     public Transform player;
     public float orbitRadius = 1.5f;
+    public Rigidbody2D playerRB;
 
     [Header("Fire Points and Prefabs")]
     public Transform firePoint;
@@ -16,6 +17,9 @@ public class Weapon : MonoBehaviour
     [Header("Charging Settings")]
     [SerializeField] private float chargeSpeed;
     [SerializeField] private float chargeTime;
+    private bool isShooting = false;
+    private bool isAimingRight = true;
+
 
     [Header("Audio Settings")]
     [SerializeField] private AudioClip chargeClip;
@@ -39,6 +43,7 @@ public class Weapon : MonoBehaviour
     {
         OrbitAroundPlayer();
         AimAtMouse();
+        Aim();
 
         
         fireTimer += Time.deltaTime;
@@ -51,16 +56,19 @@ public class Weapon : MonoBehaviour
 
             audioSource.clip = shootingClip;
             audioSource.Play();
+            Recoil();
         }
 
         if (Input.GetButton("Fire2") && chargeTime < 1)
         {
             chargeTime += Time.deltaTime * chargeSpeed;
+            
         }
 
         if (Input.GetButtonUp("Fire2") && chargeTime >= 1)
         {
             ReleaseCharge();
+            Recoil();
         }
 
         if (Input.GetButtonUp("Fire2"))
@@ -109,4 +117,32 @@ public class Weapon : MonoBehaviour
         Instantiate(chargeBulletPrefab, firePoint.position, firePoint.rotation);
         chargeTime = 0;
     }
+
+    public void Aim() //Looking right or left
+    {
+        float zRotation = firePoint.transform.rotation.eulerAngles.z; // Get the Z rotation in degrees
+
+        if (zRotation >= 270 || zRotation <= 90)
+        {
+            isAimingRight = true;
+            Debug.Log("Aiming to the right");
+        }
+        else
+        {
+            isAimingRight = false;
+            Debug.Log("Aiming to the left");
+        }
+    }
+    private void Recoil()
+    {
+        if (isAimingRight == true && isShooting == true)
+        {
+            playerRB.AddRelativeForce(Vector2.right * 100, ForceMode2D.Impulse);
+        }
+        else if (isAimingRight == false && isShooting == true)
+        {
+            playerRB.AddRelativeForce(Vector2.left * 100, ForceMode2D.Impulse);
+        }
+    }
+
 }
