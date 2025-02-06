@@ -53,12 +53,12 @@ public class Weapon : MonoBehaviour
             audioSource.Play();
         }
 
-        if (Input.GetButton("Fire2") && chargeTime < 2)
+        if (Input.GetButton("Fire2") && chargeTime < 1)
         {
             chargeTime += Time.deltaTime * chargeSpeed;
         }
 
-        if (Input.GetButtonUp("Fire2") && chargeTime >= 2)
+        if (Input.GetButtonUp("Fire2") && chargeTime >= 1)
         {
             ReleaseCharge();
         }
