@@ -176,7 +176,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1040,6 +1040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5634573331399977760}
   orbitRadius: 1.5
+  playerRB: {fileID: 0}
   firePoint: {fileID: 7165677824408599853}
   bulletPrefab: {fileID: 3452254035907287052, guid: 1a476d86210d4eb439b55985c35a630d, type: 3}
   chargeBulletPrefab: {fileID: 2466713077017285310, guid: 801618d7389ea9e4fb5a33fdec36b965, type: 3}
@@ -1048,6 +1049,7 @@ MonoBehaviour:
   chargeTime: 0.12
   chargeClip: {fileID: 8300000, guid: 6fa587d7d30f98b47adee7f44162c4b5, type: 3}
   shootingClip: {fileID: 8300000, guid: 8dc4d91d4f16a934aa41540781769a8f, type: 3}
+  chargeReleaseClip: {fileID: 0}
   fireRate: 2
 --- !u!1 &7888792652920344891
 GameObject:
