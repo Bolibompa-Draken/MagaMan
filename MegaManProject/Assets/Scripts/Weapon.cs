@@ -20,7 +20,6 @@ public class Weapon : MonoBehaviour
     private bool isShooting = false;
     private bool isAimingRight = true;
 
-
     [Header("Audio Settings")]
     [SerializeField] private AudioClip chargeClip;
     [SerializeField] private AudioClip shootingClip;
@@ -29,7 +28,6 @@ public class Weapon : MonoBehaviour
     [Header("Fire Rate Settings")]
     public float fireRate = 1f;
     private float fireTimer = 0f;
-    
 
     private AudioSource audioSource;
     private UnityEngine.Camera mainCamera;
@@ -46,14 +44,12 @@ public class Weapon : MonoBehaviour
         AimAtMouse();
         Aim();
 
-        
         fireTimer += Time.deltaTime;
 
-        
         if (Input.GetButton("Fire1") && fireTimer >= 1f / fireRate)
         {
             Shoot();
-            fireTimer = 0f; 
+            fireTimer = 0f;
 
             audioSource.clip = shootingClip;
             audioSource.Play();
@@ -65,7 +61,6 @@ public class Weapon : MonoBehaviour
         if (Input.GetButton("Fire2") && chargeTime < 1)
         {
             chargeTime += Time.deltaTime * chargeSpeed;
-            
         }
 
         if (Input.GetButtonUp("Fire2") && chargeTime >= 1)
@@ -94,7 +89,7 @@ public class Weapon : MonoBehaviour
             audioSource.Play();
         }
 
-        if(Input.GetButtonUp("Fire2"))
+        if (Input.GetButtonUp("Fire2"))
         {
             audioSource.clip = chargeReleaseClip;
             audioSource.loop = false;
@@ -104,7 +99,7 @@ public class Weapon : MonoBehaviour
 
     private void OrbitAroundPlayer()
     {
-        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCamera.transform.position.z));
         mousePosition.z = 0f;
 
         Vector3 direction = (mousePosition - player.position).normalized;
@@ -113,24 +108,18 @@ public class Weapon : MonoBehaviour
 
     private void AimAtMouse()
     {
-        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCamera.transform.position.z));
         mousePosition.z = 0f;
 
         Vector3 aimDirection = (mousePosition - firePoint.position).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
-
-       
         if ((mousePosition.x < player.position.x && player.localScale.x > 0) ||
             (mousePosition.x > player.position.x && player.localScale.x < 0))
         {
-           
             player.localScale = new Vector3(-player.localScale.x, player.localScale.y, player.localScale.z);
         }
     }
-
-
-
 
     private void Shoot()
     {
@@ -141,12 +130,11 @@ public class Weapon : MonoBehaviour
     {
         Instantiate(chargeBulletPrefab, firePoint.position, firePoint.rotation);
         chargeTime = 0;
-       
     }
 
-    public void Aim() //Looking right or left
+    public void Aim()
     {
-        float zRotation = firePoint.transform.rotation.eulerAngles.z; // Get the Z rotation in degrees
+        float zRotation = firePoint.transform.rotation.eulerAngles.z;
 
         if (zRotation >= 270 || zRotation <= 90)
         {
@@ -159,6 +147,7 @@ public class Weapon : MonoBehaviour
             Debug.Log("Aiming to the left");
         }
     }
+
     private void Recoil()
     {
         if (isAimingRight == true && isShooting == true)
@@ -172,6 +161,4 @@ public class Weapon : MonoBehaviour
             Debug.Log("Pushed to the right");
         }
     }
-
-
 }
