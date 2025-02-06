@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2394677009055445508}
   - component: {fileID: 8751615694923640022}
   - component: {fileID: 4532277509071351424}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stamina Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}

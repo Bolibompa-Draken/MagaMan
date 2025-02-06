@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8018334025919689662}
   - component: {fileID: 8883420189979909198}
   - component: {fileID: 1116667281283093191}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Heal Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
