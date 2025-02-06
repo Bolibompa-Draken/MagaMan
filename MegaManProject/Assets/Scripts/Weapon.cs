@@ -24,6 +24,7 @@ public class Weapon : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] private AudioClip chargeClip;
     [SerializeField] private AudioClip shootingClip;
+    [SerializeField] private AudioClip chargeReleaseClip;
 
     [Header("Fire Rate Settings")]
     public float fireRate = 1f;
@@ -69,11 +70,32 @@ public class Weapon : MonoBehaviour
         {
             ReleaseCharge();
             Recoil();
+           
         }
 
         if (Input.GetButtonUp("Fire2"))
         {
+            if (chargeTime >= 2)
+            {
+                ReleaseCharge();
+            }
             chargeTime = 0;
+            audioSource.loop = false;
+            audioSource.Stop();
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            audioSource.clip = chargeClip;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+
+        if(Input.GetButtonUp("Fire2"))
+        {
+            audioSource.clip = chargeReleaseClip;
+            audioSource.loop = false;
+            audioSource.Play();
         }
     }
 
@@ -116,6 +138,7 @@ public class Weapon : MonoBehaviour
     {
         Instantiate(chargeBulletPrefab, firePoint.position, firePoint.rotation);
         chargeTime = 0;
+       
     }
 
     public void Aim() //Looking right or left
