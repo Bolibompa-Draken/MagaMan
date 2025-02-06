@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5309888852816891510}
   - component: {fileID: 4510840373523148479}
   - component: {fileID: 2061578628432304607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Invicibility Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
