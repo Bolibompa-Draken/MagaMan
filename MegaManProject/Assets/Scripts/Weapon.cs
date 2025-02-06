@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour
     [Header("Fire Rate Settings")]
     public float fireRate = 1f;
     private float fireTimer = 0f;
-    private bool isFireRateBoosted = false;
+    
 
     private AudioSource audioSource;
     private UnityEngine.Camera mainCamera;
