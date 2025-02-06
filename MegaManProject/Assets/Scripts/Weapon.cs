@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour
     [Header("Fire Rate Settings")]
     public float fireRate = 1f;
     private float fireTimer = 0f;
-    private bool isFireRateBoosted = false;
+    
 
     private AudioSource audioSource;
     private UnityEngine.Camera mainCamera;
@@ -53,12 +53,12 @@ public class Weapon : MonoBehaviour
             audioSource.Play();
         }
 
-        if (Input.GetButton("Fire2") && chargeTime < 2)
+        if (Input.GetButton("Fire2") && chargeTime < 1)
         {
             chargeTime += Time.deltaTime * chargeSpeed;
         }
 
-        if (Input.GetButtonUp("Fire2") && chargeTime >= 2)
+        if (Input.GetButtonUp("Fire2") && chargeTime >= 1)
         {
             ReleaseCharge();
         }
