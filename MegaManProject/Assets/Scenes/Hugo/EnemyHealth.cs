@@ -10,6 +10,9 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject mainCamera;
     private SpriteRenderer spriteRenderer;
     private Coroutine flashRoutine;
+    private Collider2D boxCollider;
+    private Rigidbody2D rigidbodyrb;
+    private Damage damagescript;
     private EnemyController enemyController;
     [SerializeField] public GameObject[] Powerup;
 
@@ -18,8 +21,10 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
-
         enemyController = GetComponent<EnemyController>();
+        boxCollider = GetComponent<Collider2D>();
+        rigidbodyrb = GetComponent<Rigidbody2D>();
+
     }
 
 
@@ -58,8 +63,20 @@ public class EnemyHealth : MonoBehaviour
         {
             enemyController.Die();
         }
+        if (boxCollider != null)
+        {
+            boxCollider.enabled = false;
+        }
+        if (rigidbodyrb != null)
+        {
+            rigidbodyrb.bodyType = RigidbodyType2D.Static;
+        }
+        if (damagescript != null)
+        {
+            Destroy(damagescript);
+        }
 
-        if (Powerup.Length > 0 && Random.value <= 0.1f)
+        if (Powerup.Length > 0 && Random.value <= 0.3f)
         {
             GameObject RandomPowerup = Powerup[Random.Range(0, Powerup.Length)];
             Instantiate(RandomPowerup, transform.position, Quaternion.identity);
