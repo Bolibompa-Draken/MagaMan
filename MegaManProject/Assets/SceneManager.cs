@@ -1,34 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
-using System.ComponentModel;
-using System;
 
-
-
-public class SceneManager : MonoBehaviour
+public class SceneChanger : MonoBehaviour
 {
-    public string SceneName;
+  
+    public string sceneName = "Oscar";
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void ChangeScene()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void changeScene()
-    {
-        SceneManager.LoadScene(SceneName);
-    }
-
-    private static void LoadScene(string sceneName)
-    {
-        throw new NotImplementedException();
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            Debug.LogWarning("Scene name is not set!");
+        }
     }
 }
+
