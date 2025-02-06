@@ -163,12 +163,12 @@ public class Weapon : MonoBehaviour
     {
         if (isAimingRight == true && isShooting == true)
         {
-            player.position += Vector3.left * 0.5f;
+            player.position += Vector3.left * 0.15f;
             Debug.Log("Pushed to the left");
         }
         else if (isAimingRight == false && isShooting == true)
         {
-            player.position += Vector3.right * 0.5f;
+            player.position += Vector3.right * 0.15f;
             Debug.Log("Pushed to the right");
         }
     }
