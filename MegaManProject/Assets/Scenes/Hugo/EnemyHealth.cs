@@ -7,7 +7,6 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float duration;
     [SerializeField] private Material originalMaterial;
-    [SerializeField] GameObject mainCamera;
     private SpriteRenderer spriteRenderer;
     private Coroutine flashRoutine;
     private Collider2D boxCollider;
