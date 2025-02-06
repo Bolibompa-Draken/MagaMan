@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Coroutine flashRoutine;
     private EnemyController enemyController;
+    [SerializeField] public GameObject[] Powerup;
 
     void Start()
     {
@@ -19,10 +20,6 @@ public class EnemyHealth : MonoBehaviour
         originalMaterial = spriteRenderer.material;
 
         enemyController = GetComponent<EnemyController>();
-        if (enemyController == null)
-        {
-            Debug.LogError("EnemyController component missing from this object!");
-        }
     }
 
 
@@ -60,6 +57,12 @@ public class EnemyHealth : MonoBehaviour
         if (enemyController != null)
         {
             enemyController.Die();
+        }
+
+        if (Powerup.Length > 0 && Random.value <= 0.1f)
+        {
+            GameObject RandomPowerup = Powerup[Random.Range(0, Powerup.Length)];
+            Instantiate(RandomPowerup, transform.position, Quaternion.identity);
         }
     }
 
