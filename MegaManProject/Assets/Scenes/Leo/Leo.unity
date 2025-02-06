@@ -9942,6 +9942,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.23846045
       objectReference: {fileID: 0}
+    - target: {fileID: 672947891777743519, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 672947891777743519, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 672947891777743519, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1016070376127808878, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9686228
@@ -9965,6 +9977,10 @@ PrefabInstance:
     - target: {fileID: 1496793939884010981, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.44420326
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000126542902573700, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
+      propertyPath: m_PreviewTimeScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2124356479143274157, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
       propertyPath: m_Name
@@ -10073,6 +10089,18 @@ PrefabInstance:
     - target: {fileID: 6750658114751883533, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.25130156
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913439906681569191, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
+      propertyPath: m_SolverEditorData.Array.data[5].color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913439906681569191, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
+      propertyPath: m_SolverEditorData.Array.data[5].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913439906681569191, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
+      propertyPath: m_SolverEditorData.Array.data[5].color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7318291028033347694, guid: a87d74be8c33f004eadfcb619d6434de, type: 3}
       propertyPath: m_LocalRotation.w
