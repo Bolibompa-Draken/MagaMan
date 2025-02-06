@@ -262,7 +262,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678066418005059907}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b1d01890b57ba442810e90587a305c0, type: 3}
   m_Name: 
@@ -287,7 +287,7 @@ MonoBehaviour:
   staminaDrainRate: 20
   staminaRegenRate: 15
   regenDelay: 2
-  currentStamina: 0
+  currentStamina: 100
   infinitestamina: 0
   staminaBar: {fileID: 0}
 --- !u!114 &6672625772686798411
@@ -1047,9 +1047,9 @@ MonoBehaviour:
   cameraShake: {fileID: 0}
   chargeSpeed: 1.2
   chargeTime: 0.12
-  chargeClip: {fileID: 8300000, guid: 6fa587d7d30f98b47adee7f44162c4b5, type: 3}
+  chargeClip: {fileID: 8300000, guid: 5c65cd8fd5525dc4fb66e71d27bd3a32, type: 3}
   shootingClip: {fileID: 8300000, guid: 8dc4d91d4f16a934aa41540781769a8f, type: 3}
-  chargeReleaseClip: {fileID: 0}
+  chargeReleaseClip: {fileID: 8300000, guid: 9f1234b49ed73094db098adcd65710df, type: 3}
   fireRate: 2
 --- !u!1 &7888792652920344891
 GameObject:
