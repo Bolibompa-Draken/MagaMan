@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    public Transform cameraTransform;
-    public float shakeDuration = 0.1f;
-    public float shakeStrength = 0.2f;
+    [SerializeField] Transform cameraTransform;
+    [SerializeField] float shakeDuration = 0.1f;
+    [SerializeField] float shakeStrength = 0.2f;
+    [SerializeField] bool isStayingStill = true;
+
 
     void Update()
     {
@@ -23,8 +25,9 @@ public class CameraShake : MonoBehaviour
         StartCoroutine(Shake(shotDirection));
     }
 
-    public IEnumerator Shake(Vector3 direction)
+    public IEnumerator Shake(Vector3 direction) //Works when moving
     {
+
         Vector3 originalPos = cameraTransform.position;
         float elapsed = 0f;
 

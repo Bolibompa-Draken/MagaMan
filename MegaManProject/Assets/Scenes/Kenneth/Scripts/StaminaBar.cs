@@ -48,7 +48,7 @@ public class StaminaBar : MonoBehaviour
                 currentStamina = 0;
                 isRunning = false;
                 isStaminaEmpty = true;
-                cooldownTimer = regenDelay; // Start cooldown when stamina reaches 0
+                cooldownTimer = regenDelay;
             }
         }
         else
@@ -56,17 +56,15 @@ public class StaminaBar : MonoBehaviour
             if (isRunning)
             {
                 isRunning = false;
-                cooldownTimer = regenDelay; // Apply cooldown when stopping sprint
+                cooldownTimer = regenDelay;
             }
         }
 
-        // Countdown cooldown timer
         if (cooldownTimer > 0)
         {
             cooldownTimer -= Time.deltaTime;
         }
 
-        // Start regenerating after cooldown ends
         if (cooldownTimer <= 0 && !isRunning && currentStamina < maxStamina)
         {
             isRegenerating = true;
