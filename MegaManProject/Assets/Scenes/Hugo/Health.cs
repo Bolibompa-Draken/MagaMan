@@ -7,13 +7,15 @@
         [SerializeField] public int currentHealth;
         [SerializeField] public Slider healthSlider;
         [SerializeField] public bool isInvincible = false;
+        Animator animator;
 
     void Start()
         {
             currentHealth = maxHealth;
             healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;
-        }
+        animator = GetComponentInChildren<Animator>();
+    }
         public void TakeDamage(int damage)
         {
 
